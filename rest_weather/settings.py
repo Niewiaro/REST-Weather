@@ -21,6 +21,9 @@ env = environ.Env(
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+REPO_DIR = BASE_DIR.parent
+TEMPLATE_DIR = BASE_DIR / "templates"
+TEMPLATE_DIR.mkdir(parents=True, exist_ok=True)
 
 # Take environment variables from .env file
 environ.Env.read_env(BASE_DIR / ".env")
@@ -67,7 +70,7 @@ ROOT_URLCONF = "rest_weather.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "src/templates"],
+        "DIRS": [TEMPLATE_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
