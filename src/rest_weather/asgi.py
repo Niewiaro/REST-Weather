@@ -1,5 +1,5 @@
 """
-ASGI config for rest_weather project.
+ASGI rest_weather for rest_weather project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

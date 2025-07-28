@@ -1,5 +1,5 @@
 """
-WSGI config for rest_weather project.
+WSGI rest_weather for rest_weather project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

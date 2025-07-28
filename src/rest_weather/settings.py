@@ -26,7 +26,7 @@ TEMPLATE_DIR = BASE_DIR / "templates"
 TEMPLATE_DIR.mkdir(parents=True, exist_ok=True)
 
 # Take environment variables from .env file
-environ.Env.read_env(BASE_DIR / ".env")
+environ.Env.read_env(REPO_DIR / ".env")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # False if not in os.environ because of casting above
