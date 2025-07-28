@@ -41,17 +41,14 @@ jobs:
         black . --check --diff
 
     - name: Check for missing migrations
-      working-directory: src
       run: |
         python manage.py makemigrations --check --dry-run
 
     - name: Apply migrations
-      working-directory: src
       run: |
         python manage.py migrate
 
     - name: Run Django system checks
-      working-directory: src
       run: |
         python manage.py check
         
