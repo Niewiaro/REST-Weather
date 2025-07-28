@@ -25,9 +25,15 @@ from drf_spectacular.views import (
 )
 
 urlpatterns = [
+    # Admin interface
     path("admin/", admin.site.urls),
+    # API authentication
     path("api-auth/", include("rest_framework.urls")),
+    # Health check endpoint
     path("healthz/", healthz, name="healthz"),
+    # API schema generation
+    # Spectacular provides OpenAPI schema generation
+    # and Swagger/Redoc documentation views
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path(
         "api/schema/swagger-ui/",
@@ -39,4 +45,6 @@ urlpatterns = [
         SpectacularRedocView.as_view(url_name="schema"),
         name="redoc",
     ),
+    # Include core app URLs
+    path("api/", include("apps.core.urls")),
 ]
