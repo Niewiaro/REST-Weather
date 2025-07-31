@@ -28,6 +28,9 @@ TEMPLATE_DIR.mkdir(parents=True, exist_ok=True)
 # Take environment variables from .env file
 environ.Env.read_env(REPO_DIR / ".env")
 
+APP_NAME = env("APP_NAME")
+APP_VERSION = env("APP_VERSION", default="0.0.0")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 # False if not in os.environ because of casting above
 DEBUG = env("DEBUG")
