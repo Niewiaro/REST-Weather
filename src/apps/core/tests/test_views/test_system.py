@@ -38,6 +38,9 @@ class SystemViewTests(APITestCase):
         self.assertIn("system", response.data)
         self.assertIn("hostname", response.data)
         self.assertIn("uptime", response.data)
+        self.assertIn("database", response.data)
+        self.assertIn("vendor", response.data["database"])
+        self.assertIn("version", response.data["database"])
 
     def test_info_allows_only_get(self):
         url = reverse("info")
