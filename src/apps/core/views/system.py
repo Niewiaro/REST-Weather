@@ -10,7 +10,7 @@ START_TIME = datetime.now(timezone.utc)
 
 @api_view(["GET"])
 @permission_classes([AllowAny])
-def healthz(request):
+def healthz_api(request):
     result = {"status": "ok"}
     return Response(result)
 

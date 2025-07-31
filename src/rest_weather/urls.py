@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from rest_weather.views import healthz
+from apps.core.views.status import healthz
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,

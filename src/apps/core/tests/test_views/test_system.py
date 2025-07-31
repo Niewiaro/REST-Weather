@@ -4,13 +4,13 @@ from django.urls import reverse
 
 class SystemViewTests(APITestCase):
     def test_healthz_ok(self):
-        url = reverse("healthz")
+        url = reverse("healthz-api")
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, {"status": "ok"})
 
     def test_healthz_allows_only_get(self):
-        url = reverse("healthz")
+        url = reverse("healthz-api")
         for method in ["post", "put", "delete", "patch"]:
             with self.subTest(method=method):
                 response = getattr(self.client, method)(url)
