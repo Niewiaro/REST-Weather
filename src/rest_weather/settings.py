@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import environ
+from django.contrib import staticfiles
 
 # Initialise environment variables
 env = environ.Env(
@@ -26,7 +27,7 @@ TEMPLATE_DIR = BASE_DIR / "templates"
 TEMPLATE_DIR.mkdir(parents=True, exist_ok=True)
 
 # Take environment variables from .env file
-environ.Env.read_env(REPO_DIR / ".env")
+environ.Env.read_env(REPO_DIR / ".env.dev")
 
 APP_NAME = env("APP_NAME")
 APP_VERSION = env("APP_VERSION", default="0.0.0")
@@ -44,7 +45,10 @@ DEBUG = env("DEBUG")
 SECRET_KEY = env("SECRET_KEY")
 
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
+CSRF_TRUSTED_ORIGINS = env.list(
+    "DJANGO_CSRF_TRUSTED_ORIGINS", default=["https://localhost", "https://127.0.0.1"]
+)
 
 
 # Application definition
@@ -161,6 +165,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+STATIC_ROOT = BASE_DIR / "static_root"
+STATIC_ROOT.mkdir(parents=True, exist_ok=True)
+
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

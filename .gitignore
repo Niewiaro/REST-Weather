@@ -5,6 +5,8 @@
 __pycache__
 db.sqlite3
 media
+src/static_root
+static
 
 # Backup files #
 *.bak
@@ -99,6 +101,7 @@ celerybeat-schedule.*
 
 # Environments
 .env
+.env.dev
 .venv
 env/
 venv/
